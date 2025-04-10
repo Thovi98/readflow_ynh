@@ -1,0 +1,1 @@
+0 * * * * __INSTALL_DIR__/readflow sync 2>> /var/log/"$app"/"$app".log
