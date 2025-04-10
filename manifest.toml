@@ -65,7 +65,7 @@ ram.runtime = "50M"
     amd64.sha256 = "8c0b6b32ca18f78ef2c8bed87d457778a9194b3001d4fab144013d8bc87d4f92"
 
     arm64.url = "https://github.com/RobBrazier/readflow/releases/download/0.2.0/readflow_0.2.0_linux_arm64"
-    arm64.sha256 = "8c0b6b32ca18f78ef2c8bed87d457778a9194b3001d4fab144013d8bc87d4f92"
+    arm64.sha256 = "36b57e749d27ee192c3927ecdc6b06b97d0e6a752401b32da87ab7617cb8243e"
 
     extract = false
     rename = "readflow"
