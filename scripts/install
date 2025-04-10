@@ -17,14 +17,27 @@ ynh_setup_source --dest_dir="$install_dir"
 chown -R "$app": "$install_dir"
 
 #=================================================
+# BUILDING SOURCES AND SETTING UP THE SERVER
+#=================================================
+ynh_script_progression "Installing dependencies..."
+
+ynh_hide_warnings ynh_go_install
+
+go install github.com/RobBrazier/readflow@latest
+
+ynh_go_remove
+ynh_safe_rm "$install_dir/build"
+ynh_safe_rm "$install_dir/.cache"
+
+#=================================================
 # APP INITIAL CONFIGURATION
 #=================================================
 ynh_script_progression "Adding $app's configuration files..."
 
-ynh_config_add --template="some_config_file" --destination="$install_dir/some_config_file"
+ynh_config_add --template=".env" --destination="$install_dir/.env"
 
-chmod 400 "$install_dir/some_config_file"
-chown "$app:$app" "$install_dir/some_config_file"
+chmod 400 "$install_dir/.env"
+chown "$app:$app" "$install_dir/.env"
 
 #=================================================
 # ADD A CRON JOB

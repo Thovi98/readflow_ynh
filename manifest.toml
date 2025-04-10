@@ -57,24 +57,22 @@ ram.runtime = "50M"
     optional = true
 
 [resources]
-    # See the packaging documentation for the full set
-    # of explanation regarding the behavior and properties for each of those
 
     [resources.sources]
 
     [resources.sources.main]
-    # This will pre-fetch the asset which can then be deployed during the install/upgrade scripts with :
-    #    ynh_setup_source --dest_dir="$install_dir"
-    # You can also define other assets than "main" and add --source_id="foobar" in the previous command
     amd64.url = "https://github.com/RobBrazier/readflow/releases/download/0.2.0/readflow_0.2.0_linux_amd64"
     amd64.sha256 = "8c0b6b32ca18f78ef2c8bed87d457778a9194b3001d4fab144013d8bc87d4f92"
 
     arm64.url = "https://github.com/RobBrazier/readflow/releases/download/0.2.0/readflow_0.2.0_linux_arm64"
     arm64.sha256 = "8c0b6b32ca18f78ef2c8bed87d457778a9194b3001d4fab144013d8bc87d4f92"
 
+    extract = false
+    rename = "readflow"
+
     autoupdate.strategy = "latest_github_release"
-    autoupdate.asset.amd64 = ".*amd64"
-    autoupdate.asset.arm64 = ".*arm64"
+    autoupdate.asset.amd64 = ".*amd64$"
+    autoupdate.asset.arm64 = ".*arm64$"
 
     [resources.system_user]
 
