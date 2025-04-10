@@ -15,6 +15,7 @@ ynh_script_progression "Setting up source files..."
 ynh_setup_source --dest_dir="$install_dir"
 
 chown -R "$app": "$install_dir"
+chmod -R 750 "$install_dir"
 
 #=================================================
 # BUILDING SOURCES AND SETTING UP THE SERVER
