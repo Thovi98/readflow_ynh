@@ -1,1 +1,1 @@
-Ceci est une fausse description des fonctionalités de l'app
+Suivez vos lectures Kobo sur Anilist et Hardcover en utilisant les bases de données Calibre-Web et Calibre.

@@ -1,1 +1,1 @@
-This is a dummy description of this app features
+Track your Kobo reads on Anilist and Hardcover using Calibre-Web and Calibre databases
