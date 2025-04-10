@@ -27,35 +27,6 @@ disk = "50M"
 ram.build = "50M"
 ram.runtime = "50M"
 
-[install]
-
-    [install.targets]
-    ask.en = "Which services do you want to target?"
-    type = "select"
-    choices = ["anilist,hardcover", "hardcover", "anilist"]
-    default = "anilist,hardcover"
-    optional = true
-
-    [install.database_calibre]
-    ask.en = "Path to your Calibre metadata.db"
-    type = "path"
-
-    [install.database_calibreweb]
-    ask.en = "Path to your Calibre-Web app.db"
-    help.en = "Normally, it should be /var/www/calibreweb/app.db"
-    default = "/var/www/calibreweb/app.db"
-    type = "path"
-
-    [install.token_anilist]
-    ask.en = "What’s your Anilist token?"
-    type = "string"
-    optional = true
-
-    [install.token_hardcover]
-    ask.en = "What’s your Hardcover.app token?"
-    type = "string"
-    optional = true
-
 [resources]
 
     [resources.sources]

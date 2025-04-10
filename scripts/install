@@ -25,21 +25,11 @@ ynh_hide_warnings ynh_go_install
 	export GOPATH="$install_dir/build/go"
 	export GOCACHE="$install_dir/build/.cache"
 
-go install github.com/RobBrazier/readflow@latest
+ynh_hide_warnings go install github.com/RobBrazier/readflow@latest
 
 ynh_go_remove
 ynh_safe_rm "$install_dir/build"
 ynh_safe_rm "$install_dir/.cache"
-
-#=================================================
-# APP INITIAL CONFIGURATION
-#=================================================
-ynh_script_progression "Adding $app's configuration files..."
-
-ynh_config_add --template=".env" --destination="$install_dir/.env"
-
-chmod 400 "$install_dir/.env"
-chown "$app:$app" "$install_dir/.env"
 
 #=================================================
 # ADD A CRON JOB
