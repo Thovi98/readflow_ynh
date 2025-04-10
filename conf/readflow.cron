@@ -1,1 +1,1 @@
-0 * * * * __INSTALL_DIR__/readflow sync 2>> /var/log/"$app"/"$app".log
+0 * * * * __INSTALL_DIR__/readflow sync -c __INSTALL_DIR__/readflow.yaml sync 2>> /var/log/"$app"/"$app".log
