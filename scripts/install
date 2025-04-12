@@ -45,6 +45,8 @@ chmod 644 "/etc/cron.d/$app"
 #=================================================
 
 ynh_config_add_logrotate
+touch /var/log/$app/$app.log
+chown -R "$app": /var/log/$app/
 
 #=================================================
 # END OF SCRIPT
