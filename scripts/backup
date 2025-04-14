@@ -29,7 +29,7 @@ ynh_backup "/etc/logrotate.d/$app"
 
 ynh_backup "/etc/cron.d/$app"
 
-# NB: /var/log is not backuped during safety-backup-before-upgrades, same as $data_dir
+# NB: /var/log is not backuped during safety-backup-before-upgrades
 ynh_backup "/var/log/$app/"
 
 #=================================================
