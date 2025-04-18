@@ -41,7 +41,13 @@ ynh_config_add --template=".env" --destination="$install_dir/.env"
 
 chmod 400 "$install_dir/.env"
 chown "$app:$app" "$install_dir/.env"
- 
+
+#=================================================
+#First sync
+ #=================================================
+
+env TARGETS=false DATABASE_CALIBRE="$database_calibre" DATABASE_CALIBREWEB="$database_calibreweb" TOKEN_ANILIST="$token_anilist" TOKEN_HARDCOVER="$token_hardcover" "$install_dir"/readflow sync -c "$install_dir"/readflow.yaml
+
 #=================================================
 # SYSTEM CONFIGURATION
 #=================================================
