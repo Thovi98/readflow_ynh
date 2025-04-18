@@ -1,2 +1,0 @@
-# Run readflow sync every hour
-0 * * * * __APP__ __INSTALL_DIR__/readflow sync -c __INSTALL_DIR__/readflow.yaml >> /var/log/__APP__/__APP__.log 2>&1

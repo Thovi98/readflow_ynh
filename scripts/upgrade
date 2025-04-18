@@ -33,12 +33,15 @@ ynh_safe_rm "$install_dir/build"
 ynh_safe_rm "$install_dir/.cache"
 
 #=================================================
-# ADD A CRON JOB
+# APP INITIAL CONFIGURATION
 #=================================================
+ynh_script_progression "Upgrading $app's configuration files..."
 
-ynh_config_add --template="readflow.cron" --destination="/etc/cron.d/$app"
-chown root: "/etc/cron.d/$app"
-chmod 644 "/etc/cron.d/$app"
+ynh_config_add --template=".env" --destination="$install_dir/.env"
+
+chmod 400 "$install_dir/.env"
+chown "$app:$app" "$install_dir/.env"
+ 
 
 #=================================================
 # REAPPLY SYSTEM CONFIGURATION
@@ -46,6 +49,18 @@ chmod 644 "/etc/cron.d/$app"
 ynh_script_progression "Upgrading system configurations related to $app..."
 
 ynh_config_add_logrotate
+
+# Create a dedicated systemd config
+ynh_config_add_systemd
+yunohost service add $app --description="$app service" --test_status="systemctl show $app.service  -p ActiveState --value | grep -v failed" --log "/var/log/$app/$app.log"
+# Disable the service, this is to prevent the service from being triggered at boot time
+systemctl disable $app.service --quiet
+
+# Configure the systemd timer
+ynh_config_add --template="systemd.timer" --destination="/etc/systemd/system/$app.timer"
+systemctl enable $app.timer --quiet
+systemctl start $app.timer
+
 
 #=================================================
 # END OF SCRIPT

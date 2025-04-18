@@ -11,11 +11,15 @@ source /usr/share/yunohost/helpers
 # REMOVE SYSTEM CONFIGURATION
 #=================================================
 
-ynh_config_remove_logrotate
+if ynh_hide_warnings yunohost service status $app >/dev/null; then
+	yunohost service remove $app
+fi
 
-# Remove a cron file
-# TODO: Ensure that cron job is not running (How !?)
-ynh_safe_rm "/etc/cron.d/$app"
+systemctl stop $app.timer
+systemctl disable $app.timer --quiet
+ynh_config_remove_systemd
+ynh_safe_rm "/etc/systemd/system/$app.timer"
+
 
 #=================================================
 # END OF SCRIPT
