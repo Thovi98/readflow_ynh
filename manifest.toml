@@ -16,7 +16,7 @@ code = "https://github.com/RobBrazier/readflow"
 [integration]
 yunohost = ">= 12.0.9"
 helpers_version = "2.1"
-architectures = "all"
+architectures = [ "amd64", "arm64" ]
 multi_instance = true
 
 ldap = false
@@ -27,16 +27,45 @@ disk = "50M"
 ram.build = "50M"
 ram.runtime = "50M"
 
+[install]
+
+    [install.targets]
+    ask.en = "Which services do you want to target?"
+    type = "select"
+    choices = ["anilist,hardcover", "hardcover", "anilist"]
+    default = "anilist,hardcover"
+    optional = true
+
+    [install.database_calibre]
+    ask.en = "Path to your Calibre metadata.db"
+    type = "path"
+ 
+    [install.database_calibreweb]
+    ask.en = "Path to your Calibre-Web app.db"
+    help.en = "Normally, it should be /var/www/calibreweb/app.db"
+    default = "/var/www/calibreweb/app.db"
+    type = "path"
+
+    [install.token_anilist]
+    ask.en = "What’s your Anilist token?"
+    type = "string"
+    optional = true
+ 
+    [install.token_hardcover]
+    ask.en = "What’s your Hardcover.app token?"
+    type = "string"
+    optional = true
+
 [resources]
 
     [resources.sources]
 
     [resources.sources.main]
-    amd64.url = "https://github.com/RobBrazier/readflow/releases/download/0.2.0/readflow_0.2.0_linux_amd64"
-    amd64.sha256 = "8c0b6b32ca18f78ef2c8bed87d457778a9194b3001d4fab144013d8bc87d4f92"
+    amd64.url = "https://github.com/RobBrazier/readflow/releases/download/0.3.0/readflow_0.3.0_linux_amd64"
+    amd64.sha256 = "a0c2e605583afaad4257cdf73e5d15c99a42c49302e4c21bc2bad75198b43a92"
 
-    arm64.url = "https://github.com/RobBrazier/readflow/releases/download/0.2.0/readflow_0.2.0_linux_arm64"
-    arm64.sha256 = "36b57e749d27ee192c3927ecdc6b06b97d0e6a752401b32da87ab7617cb8243e"
+    arm64.url = "https://github.com/RobBrazier/readflow/releases/download/0.3.0/readflow_0.3.0_linux_arm64"
+    arm64.sha256 = "d6650cbfcf3dc572cba98e8079ae00ed9e250dcecc202870d0335fd43e09cbca"
 
     extract = false
     rename = "readflow"
