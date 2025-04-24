@@ -44,9 +44,16 @@ chown "$app:$app" "$install_dir/.env"
 
 #=================================================
 #First sync
- #=================================================
+#=================================================
 
-"$install_dir"/readflow setup READFLOW_DOCKER=1 TARGETS=false DATABASE_CALIBRE="$database_calibre" DATABASE_CALIBREWEB="$database_calibreweb" TOKEN_ANILIST="$token_anilist" TOKEN_HARDCOVER="$token_hardcover"
+export READFLOW_DOCKER=1 
+export TARGETS=false 
+export DATABASE_CALIBRE="$database_calibre" 
+exportDATABASE_CALIBREWEB="$database_calibreweb" 
+export TOKEN_ANILIST="$token_anilist" 
+export TOKEN_HARDCOVER="$token_hardcover" 
+
+"$install_dir"/readflow setup -c "$install_dir"/config.yaml
 
 #=================================================
 # SYSTEM CONFIGURATION
