@@ -54,7 +54,7 @@ export TOKEN_ANILIST="$token_anilist"
 export TOKEN_HARDCOVER="$token_hardcover" 
 
 # "$install_dir"/readflow setup -c "$install_dir"/config.yaml
-"$install_dir"/readflow sync
+# "$install_dir"/readflow sync
 
 #=================================================
 # SYSTEM CONFIGURATION
