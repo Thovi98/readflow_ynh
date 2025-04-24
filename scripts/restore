@@ -23,8 +23,6 @@ chmod -R 750 "$install_dir"
 #=================================================
 ynh_script_progression "Restoring system configurations related to $app..."
 
-ynh_restore "/etc/logrotate.d/$app"
-
 ynh_restore "/etc/systemd/system/${app}.service"
 yunohost service add $app --description="$app service" --test_status="systemctl show $app.service  -p ActiveState --value | grep -v failed" --log "/var/log/$app/$app.log"
 # Disable the service, this is to prevent the service from being triggered at boot time
@@ -37,8 +35,6 @@ systemctl start $app.timer
 #=================================================
 # RESTORE VARIOUS FILES
 #=================================================
-
-ynh_restore "/etc/cron.d/$app"
 
 ### For other apps, the simple way is better:
 ynh_restore "/var/log/$app/"

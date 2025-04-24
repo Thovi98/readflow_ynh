@@ -5,6 +5,7 @@ packaging_format = 2
 id = "readflow"
 name = "Readflow"
 description.en = " Track your Kobo reads on Anilist.co and Hardcover.app using Calibre-Web and Calibre databases "
+
 version = "0.2.0~ynh1"
 
 maintainers = ["Thovi98"]
