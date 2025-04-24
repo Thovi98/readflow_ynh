@@ -25,8 +25,7 @@ ynh_script_progression "Installing dependencies..."
 ynh_hide_warnings ynh_go_install
 	export GOPATH="$install_dir/build/go"
 	export GOCACHE="$install_dir/build/.cache"
-
-ynh_hide_warnings "$install_dir/build/go" install github.com/RobBrazier/readflow@latest
+ynh_hide_warnings go install github.com/RobBrazier/readflow@latest
 
 ynh_go_remove
 ynh_safe_rm "$install_dir/build"
