@@ -53,7 +53,7 @@ exportDATABASE_CALIBREWEB="$database_calibreweb"
 export TOKEN_ANILIST="$token_anilist" 
 export TOKEN_HARDCOVER="$token_hardcover" 
 
-"$install_dir"/readflow setup -c "$install_dir"/config.yaml
+"$install_dir"/readflow setup -c "$install_dir"/config.yaml --no-interaction
 
 #=================================================
 # SYSTEM CONFIGURATION
